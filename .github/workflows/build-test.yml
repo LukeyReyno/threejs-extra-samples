@@ -1,15 +1,13 @@
-name: Deploy to GitHub Pages
+name: Build and Test Project
 
 on:
-  push:
-    branches:
-      - main # Trigger on pushes to the main branch
+  pull_request:
 
 permissions:
   contents: write
 
 jobs:
-  build-and-deploy:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,10 +29,3 @@ jobs:
     # Step 4: Build the project
     - name: Build the project
       run: npm run build
-
-    # Step 5: Deploy to GitHub Pages
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist

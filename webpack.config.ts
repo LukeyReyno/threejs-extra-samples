@@ -12,7 +12,7 @@ module.exports = (env: any, argv: Record<string, any>) => {
   return {
     entry: {
       example_index: './examples/src/index.ts',
-      webxr_xr_cubes: './examples/src/webxr_xr_cubes.ts'
+      webxr_xr_cubes: './examples/src/webxr_xr_cubes.ts',
     },
     module: {
       rules: [
@@ -27,7 +27,7 @@ module.exports = (env: any, argv: Record<string, any>) => {
       extensions: ['.ts', '.js'],
     },
     output: {
-      filename: isProduction ? 'bundle.[contenthash].js' : 'bundle.js',
+      filename: isProduction ? 'bundle.[contenthash].js' : '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
       clean: true, // Clean the output directory before emit
     },
@@ -41,6 +41,10 @@ module.exports = (env: any, argv: Record<string, any>) => {
       }),
       new CopyPlugin({
         patterns: [
+          {
+            from: './index.html',
+            to: 'index.html',
+          },
           {
             from: './files',
             to: 'files',
@@ -78,7 +82,7 @@ module.exports = (env: any, argv: Record<string, any>) => {
       compress: true,
       hot: !isProduction,
       liveReload: !isProduction,
-      webSocketServer: !isProduction,
+      webSocketServer: false,
       port: 9000,
     },
     optimization: {
