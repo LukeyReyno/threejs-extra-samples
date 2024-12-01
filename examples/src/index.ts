@@ -17,7 +17,19 @@ const links: { [key: string]: HTMLElement } = {};
 const validRedirects = new Map();
 const fragment = document.createDocumentFragment();
 
-const BASE_URL = `${window.location.origin}/examples`;
+const configureBaseURL = () => {
+  const href = window.location.href;
+  const examplesPattern = /\/examples(\/|$)/;
+  const match = href.match(examplesPattern);
+
+  if (match) {
+    return href.substring(0, match.index + match[0].length);
+  }
+
+  return href;
+}
+
+const BASE_URL = configureBaseURL();
 
 let selected: any = null;
 
