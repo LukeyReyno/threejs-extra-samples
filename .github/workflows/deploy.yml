@@ -6,6 +6,9 @@ on:
       - main # Trigger on pushes to the main branch
   pull_request:
 
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
