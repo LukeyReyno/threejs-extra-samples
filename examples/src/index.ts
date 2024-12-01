@@ -19,7 +19,7 @@ const fragment = document.createDocumentFragment();
 
 const configureBaseURL = () => {
   const href = window.location.href;
-  const examplesPattern = /\/examples(\/|$)/;
+  const examplesPattern = /\/examples/;
   const match = href.match(examplesPattern);
 
   if (match) {
