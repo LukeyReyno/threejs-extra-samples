@@ -1,5 +1,6 @@
 {
 	"webxr": [
-		"webxr_xr_cubes"
+		"webxr_xr_cubes",
+		"webxr_xr_equirect_layer"
 	]
 }
