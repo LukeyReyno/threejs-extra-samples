@@ -170,10 +170,9 @@ function selectFile(file) {
 
   selected = file;
 
-  // TODO: Update this
   // Reveal "View source" button and set attributes to this example
   viewSrcButton.style.display = '';
-  viewSrcButton.href = 'https://github.com/mrdoob/three.js/blob/master/examples/' + selected + '.html';
+  viewSrcButton.href = 'https://github.com/LukeyReyno/threejs-extra-samples/blob/main/examples/src/' + selected + '.ts';
   viewSrcButton.title = 'View source code for ' + getName(selected) + ' on GitHub';
 }
 
