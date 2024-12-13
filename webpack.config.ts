@@ -7,7 +7,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 
-const example_pages = ['webxr_xr_cubes', 'webxr_xr_equirect_layer'];
+const example_pages = ['webxr_xr_cubes', 'webxr_xr_equirect_layer',  'webxr_xr_foveation'];
 
 module.exports = (env: any, argv: Record<string, any>) => {
   const isProduction = argv.mode === 'production';
@@ -51,6 +51,12 @@ module.exports = (env: any, argv: Record<string, any>) => {
       ],
     },
     resolve: {
+      // Use alias to avoid importing three multiple times
+      alias: {
+        three: path.resolve('./node_modules/three'),
+        VRButton: path.resolve('./node_modules/three/examples/jsm/webxr/VRButton.js'),
+        XRControllerModelFactory: path.resolve('./node_modules/three/examples/jsm/webxr/XRControllerModelFactory.js')
+      },
       extensions: ['.ts', '.js'],
     },
     output: {
